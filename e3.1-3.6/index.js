@@ -56,6 +56,20 @@ const generateId = () => Math.floor(Math.random() * 1000)
 app.post('/api/persons', (request, response) => {
     const body = request.body
 
+    // console.log('body content name => ' + body.content.name)
+
+    if (!body.content) {
+        return response.status(400).json({
+            error: 'content missing'
+        })
+    }
+
+    if (persons.some(p => p.name === body.content.name)) {
+        return response.status(400).json({
+            error: 'this name is already added'
+        })
+    }
+
     const person = {
         content: body.content,
         important: Boolean(body.important) || false,

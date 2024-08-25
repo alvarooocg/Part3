@@ -26,6 +26,8 @@ let persons = [
     }
 ]
 
+// /api/perons
+
 app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
@@ -41,6 +43,15 @@ app.get('/api/persons/:id', (request, response) => {
         response.status(404).end()
     }
 })
+
+app.delete('/api/persons/:id', (request, response) => {
+    const id = Number(request.params.id)
+    persons = persons.filter(p => p.id !== id)
+
+    response.status(204).end()
+})
+
+// /info
 
 app.get('/info', (request, response) => {
     const requestDate = new Date().toString()

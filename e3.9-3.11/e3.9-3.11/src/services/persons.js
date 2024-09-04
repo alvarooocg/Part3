@@ -19,3 +19,5 @@ const update = (id, newObject) => {
 export default { getAll, create, update }
 
 // I MADE THE EXERCISE DEPLOYING THE BACKEND ON RENDER AND ON THE LOCALHOST (I DONT KNOW IF ITS GOOD)
+
+// I DID THE THREE EXERCISES (9-11) IN THE EXERCISE 9 COMMIT

@@ -1,10 +1,23 @@
-const Filter = ({ filter, handleFilterChange }) => 
-    <form>
-        <div>
-            filter shown with <input
-                                value={filter}
-                                onChange={handleFilterChange} />
-        </div>
-    </form>
+const Notification = ({ message, isError }) => {
+    if (message === null) {
+        return null
+    }
+    
+    console.log("isError => " + isError)
 
-export default Filter
+    if (isError === true) {
+        return (
+            <div className="message red">
+                {message}
+            </div>
+        )
+    } else {
+        return (
+            <div className="message green">
+                {message}
+            </div>
+        )
+    }
+}
+
+export default Notification

@@ -56,6 +56,7 @@ app.get('/api/persons', (request, response) => {
     })
 })
 
+/*
 app.get('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
 
@@ -103,6 +104,7 @@ app.post('/api/persons', (request, response) => {
     persons = persons.concat(person)
     response.json(person)
 })
+*/
 
 // /info
 

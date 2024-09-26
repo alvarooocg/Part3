@@ -1,7 +1,11 @@
+require('dotenv').config()
+
 const express = require('express')
 const morgan = require('morgan')
 
 const app = express()
+
+const Person = require('./models/person')
 
 morgan.token('body', (req) => {
     if (req.method === 'POST') {
@@ -17,27 +21,6 @@ const cors = require('cors')
 app.use(cors())
 
 app.use(express.json())
-
-// mongodb code
-
-const mongoose = require('mongoose')
-
-const password = process.argv[2]
-
-const url = 
-    `mongodb+srv://alvarocg:${password}@cluster0.gzh3l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-
-mongoose.set('strictQuery', false)
-mongoose.connect(url)
-
-const personSchema = new mongoose.Schema({
-    name: String,
-    number: String,
-    id: Number,
-})
-
-const Person = mongoose.model('Person', personSchema)
-
 
 /*
 let persons = [
@@ -63,6 +46,7 @@ let persons = [
     }
 ]
 */
+
 
 // /api/persons
 
@@ -134,7 +118,7 @@ app.get('/info', (request, response) => {
         `)
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })

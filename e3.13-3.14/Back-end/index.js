@@ -106,7 +106,7 @@ app.post('/api/persons', (request, response) => {
 })
 */
 
-// /info
+// info
 
 app.get('/info', (request, response) => {
     const requestDate = new Date().toString()

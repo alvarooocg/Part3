@@ -96,11 +96,10 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    const newPerson = {
+    const newPerson = new Person({
         content: body.content,
-        important: Boolean(body.important) || false,
-        id: generateId()
-    }
+        important: Boolean(body.important) || false
+    })
 
     // persons = persons.concat(person)
     // response.json(person)

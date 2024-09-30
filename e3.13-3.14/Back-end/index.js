@@ -77,6 +77,7 @@ app.delete('/api/persons/:id', (request, response) => {
 })
 
 const generateId = () => Math.floor(Math.random() * 1000)
+*/
 
 app.post('/api/persons', (request, response) => {
     const body = request.body
@@ -89,22 +90,24 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    if (persons.some(p => p.name === body.content.name)) {
+    if (Person.some(p => p.name === body.content.name)) {
         return response.status(400).json({
             error: 'this name is already added'
         })
     }
 
-    const person = {
+    const newPerson = {
         content: body.content,
         important: Boolean(body.important) || false,
         id: generateId()
     }
 
-    persons = persons.concat(person)
-    response.json(person)
+    // persons = persons.concat(person)
+    // response.json(person)
+    newPerson.save().then(savedPerson => {
+        response.json(savedPerson)
+    })
 })
-*/
 
 // info
 

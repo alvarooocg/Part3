@@ -90,15 +90,18 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
+    /*
     if (Person.some(p => p.name === body.content.name)) {
         return response.status(400).json({
             error: 'this name is already added'
         })
     }
+    */
 
     const newPerson = new Person({
-        content: body.content,
-        important: Boolean(body.important) || false
+        name: body.content.name,
+        number: body.content.number,
+        id: generateId()
     })
 
     // persons = persons.concat(person)

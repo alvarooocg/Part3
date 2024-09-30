@@ -75,9 +75,9 @@ app.delete('/api/persons/:id', (request, response) => {
 
     response.status(204).end()
 })
-
-const generateId = () => Math.floor(Math.random() * 1000)
 */
+const generateId = () => Math.floor(Math.random() * 1000)
+
 
 app.post('/api/persons', (request, response) => {
     const body = request.body
@@ -100,7 +100,8 @@ app.post('/api/persons', (request, response) => {
 
     const newPerson = new Person({
         name: body.name,
-        number: body.number
+        number: body.number,
+        id: generateId()
     })
 
     // persons = persons.concat(person)

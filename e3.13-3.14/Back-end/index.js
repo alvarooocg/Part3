@@ -91,11 +91,13 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
+    /*
     if (Person.some(p => p.name === body.content.name)) {
         return response.status(400).json({
             error: 'this name is already added'
         })
     }
+    */
 
     const newPerson = new Person({
         name: body.name,

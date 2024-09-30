@@ -56,7 +56,7 @@ app.get('/api/persons', (request, response) => {
     })
 })
 
-/*
+
 app.get('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
 
@@ -69,6 +69,7 @@ app.get('/api/persons/:id', (request, response) => {
     }
 })
 
+/*
 app.delete('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     persons = persons.filter(p => p.id !== id)
@@ -76,7 +77,7 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 */
-const generateId = () => Math.floor(Math.random() * 1000)
+// const generateId = () => Math.floor(Math.random() * 1000)
 
 
 app.post('/api/persons', (request, response) => {
@@ -84,19 +85,17 @@ app.post('/api/persons', (request, response) => {
 
     // console.log('body content name => ' + body.content.name)
 
-    if (!body.content) {
+    if (body.name === undefined || body.number === undefined) {
         return response.status(400).json({
             error: 'content missing'
         })
     }
 
-    /*
     if (Person.some(p => p.name === body.content.name)) {
         return response.status(400).json({
             error: 'this name is already added'
         })
     }
-    */
 
     const newPerson = new Person({
         name: body.name,

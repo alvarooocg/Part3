@@ -99,8 +99,8 @@ app.post('/api/persons', (request, response) => {
     */
 
     const newPerson = new Person({
-        name: body.content.name,
-        number: body.content.number
+        name: body.name,
+        number: body.number
     })
 
     // persons = persons.concat(person)

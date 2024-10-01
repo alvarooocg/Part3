@@ -16,6 +16,13 @@ const App = () => {
   const [keyword, setKeyword] = useState('')
   const [message, setMessage] = useState(null)
   const [isError, setIsError] = useState(false)
+  const [refreshKey, setRefreshKey] = useState(0)
+
+  const refreshComponent = () => {
+      console.log("Component refreshed")
+      setRefreshKey(refreshKey + 1)
+  }
+
 
   useEffect(() => {
     personService
@@ -130,7 +137,7 @@ const App = () => {
       <h2>add a new</h2>
       <Add newName={newName} newNumber={newNumber} handleNameChange={handleNameChange} handleNumberChange={handleNumberChange} addPerson={addPerson} />
       <h2>Numbers</h2>
-      <Persons persons={filteredPersons} />
+      <Persons persons={filteredPersons} refreshComponent={refreshComponent} />
     </div>
   )
 }

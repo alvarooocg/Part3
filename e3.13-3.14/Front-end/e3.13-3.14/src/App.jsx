@@ -86,7 +86,8 @@ const App = () => {
     event.preventDefault()
 
     if(window.confirm(`Delete ${p.name} ?`)) {
-      axios.delete(`http://localhost:3001/api/persons/${p.id}`)
+      personService
+        .deletePs(person.id)
     } 
   }
 

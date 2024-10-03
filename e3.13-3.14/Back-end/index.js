@@ -147,6 +147,8 @@ app.get('/info', (request, response) => {
 app.use(unknownEndpoint)
 app.use(errorHandler)
 
+// E3.16 already done 
+
 const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)

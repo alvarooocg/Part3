@@ -144,19 +144,21 @@ app.put('/api/persons/:id', (request, response) => {
 
 // info
 
-/*
-app.get('/info', (request, response) => {
-    const requestDate = new Date().toString()
 
-    console.log(requestDate)
-    
-    response.send(`
-                        <p>Phonebook has info for ${persons.length} people</p>
-                        <br />
-                        <p>${requestDate}</p>
-        `)
+app.get('/info', (request, response) => {
+    const requestDate = new Date().toString();
+
+    Person.find({}).then(persons => {
+        const numberOfPeople = persons.length;
+
+        response.send(`
+            <p>Phonebook has info for ${numberOfPeople} people</p>
+            <br />
+            <p>${requestDate}</p>
+        `);
+    }).catch(error => next(error));
 })
-*/
+
 
 app.use(unknownEndpoint)
 app.use(errorHandler)

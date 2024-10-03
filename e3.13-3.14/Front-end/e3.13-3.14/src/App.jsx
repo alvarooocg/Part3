@@ -82,12 +82,12 @@ const App = () => {
     setNewNumber('')
   }
 
-  const deletePerson = (person, event) => {
-    event.preventDefault()
-
+  const deletePerson = (person) => {
     if(window.confirm(`Delete ${person.name} ?`)) {
       personService
         .deletePs(person.id)
+      window.location.reload()
+      console.log("page reloaded!")
     } 
   }
 

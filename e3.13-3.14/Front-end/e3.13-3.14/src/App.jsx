@@ -31,7 +31,7 @@ const App = () => {
   const addPerson = (event) => {
     event.preventDefault()
     
-    if(isRepeated == true){
+    if(isRepeated === true){
       if(window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
         const personToFind = persons.find(e => e.name === newName)
         const id = personToFind.id
@@ -92,7 +92,7 @@ const App = () => {
   }
 
   const handleNameChange = (event) => {
-    if(checkName(event.target.value) == false) {
+    if(checkName(event.target.value) === false) {
       setIsRepeated(true)
       console.log(`${event.target.value} is repeated`)
     } else {

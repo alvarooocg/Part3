@@ -4,7 +4,7 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const Person = require('./models/person')
-const { default: Persons } = require('../Front-end/e3.13-3.14/src/components/Persons')
+// const { default: Persons } = require('../Front-end/e3.13-3.14/src/components/Persons')
 
 const app = express()
 
@@ -129,7 +129,7 @@ app.post('/api/persons', (request, response) => {
     })
 })
 
-app.put('api/persons:id', (request, response) => {
+app.put('api/persons/:id', (request, response) => {
     const body = request.body
 
     const person = {

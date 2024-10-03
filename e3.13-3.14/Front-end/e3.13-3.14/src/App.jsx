@@ -82,10 +82,10 @@ const App = () => {
     setNewNumber('')
   }
 
-  const deletePerson = (event, person) => {
+  const deletePerson = (person, event) => {
     event.preventDefault()
 
-    if(window.confirm(`Delete ${p.name} ?`)) {
+    if(window.confirm(`Delete ${person.name} ?`)) {
       personService
         .deletePs(person.id)
     } 

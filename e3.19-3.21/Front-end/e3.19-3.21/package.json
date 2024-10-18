@@ -1,5 +1,5 @@
 {
-  "name": "e3.13-3.14",
+  "name": "e3.19-3.21",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "morgan": "^1.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

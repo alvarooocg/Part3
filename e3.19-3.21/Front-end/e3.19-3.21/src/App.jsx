@@ -24,7 +24,7 @@ const App = () => {
         setPersons(initialPersons)
       })
       .catch(error => {
-        console.log('an error has ocurred')
+        console.log('an error has ocurred', error)
       })
   }, [])
 
@@ -43,7 +43,7 @@ const App = () => {
             setPersons(persons.map(p => p.id !== id ? p : returnedPerson))
           })
           .catch(error => {
-            console.log('an error has ocurred')
+            console.log('an error has ocurred', error)
             setMessage(`Information of '${newName}' has already been removed from server`)
             setIsError(true)
             setTimeout(() =>{
@@ -67,7 +67,9 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
         })
         .catch(error => {
-          console.log('an error has ocurred')
+          console.log('an error has ocurred', error)
+          setMessage(error)
+          setIsError(true)
         })
       
       setIsError(false)

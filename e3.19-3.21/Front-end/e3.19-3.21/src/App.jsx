@@ -70,7 +70,7 @@ const App = () => {
         })
         .catch(error => {
           console.log('an error has ocurred', error)
-          setMessage(error.message)
+          setMessage(error.response.data.error)
           setIsError(true)
         })
 
@@ -79,6 +79,7 @@ const App = () => {
       }, 5000)
     }
     
+    setIsError(false)
     setNewName('')
     setNewNumber('')
   }

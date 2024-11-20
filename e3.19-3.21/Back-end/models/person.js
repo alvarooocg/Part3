@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { type } = require('os')
 
 mongoose.set('strictQuery', false)
 
@@ -21,7 +22,17 @@ const personSchema = new mongoose.Schema({
         minLength: [3, 'Name too short, at least needs 3 characters'],
         required: true
     },
-    number: String,
+    number: {
+        type: String,
+        minLength: [8, 'Number too short, at least needs 8 characters'],
+        required: true,
+        validate: {
+            validator: function(v) {
+                return /\d{2,3}-\d/.test(v)
+            },
+        message: props => `${props.value} is not a valid phone number!`
+        },
+    },
     id: Number,
 })
 

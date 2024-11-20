@@ -65,15 +65,14 @@ const App = () => {
         .create(personObject)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
+          setIsError(false)
+          setMessage(`Added ${newName}`)
         })
         .catch(error => {
           console.log('an error has ocurred', error)
-          setMessage(error)
+          setMessage(error.message)
           setIsError(true)
         })
-      
-      setIsError(false)
-      setMessage(`Added ${newName}`)
 
       setTimeout(() =>{
         setMessage(null)

@@ -1,23 +1,14 @@
+const express = require('express')
+const app = express()
 require('dotenv').config()
 
-const express = require('express')
+
 const morgan = require('morgan')
 const cors = require('cors')
 const Person = require('./models/person')
 // const { default: Persons } = require('../Front-end/e3.13-3.14/src/components/Persons')
 
-const app = express()
-
-morgan.token('body', (req) => {
-    if (req.method === 'POST') {
-        return JSON.stringify(req.body)
-    } 
-    return ''
-})
-
 app.use(express.static('dist'))
-app.use(express.json())
-app.use(cors())
 
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
@@ -38,11 +29,13 @@ const errorHandler = (error, request, response, next) => {
     next(error)
 }
 
-app.use(requestLogger)
-
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
+
+app.use(cors())
+app.use(express.json())
+app.use(requestLogger)
 
 /*
 let persons = [
@@ -89,7 +82,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 })
 
 
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response, next) => {
     Person.findByIdAndDelete(request.params.id)
         .then(result => {
             response.status(204).end()
@@ -100,7 +93,7 @@ app.delete('/api/persons/:id', (request, response) => {
 // const generateId = () => Math.floor(Math.random() * 1000)
 
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     const body = request.body
 
     // console.log('body content name => ' + body.content.name)
@@ -132,7 +125,7 @@ app.post('/api/persons', (request, response) => {
     .catch(error => next(error))
 })
 
-app.put('/api/persons/:id', (request, response) => {
+app.put('/api/persons/:id', (request, response, next) => {
     const body = request.body
 
     const person = {
@@ -148,7 +141,7 @@ app.put('/api/persons/:id', (request, response) => {
 // info
 
 
-app.get('/info', (request, response) => {
+app.get('/info', (request, response, next) => {
     const requestDate = new Date().toString();
 
     Person.find({}).then(persons => {
